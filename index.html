@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="HTML,CSS,JAVASCRIPT,API,QUOTES">
+  <meta name="author" content="Abdulwahab Lawal Abdullahi">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+  <script src="js/index.js"></script>
+  <title>Random Quote Generator</title>
+</head>
+<body>
+  <div class="social-link">
+  <a href="https://github.com/Wahabl" class="icon">
+  <i class="fab fa-github"></i>
+                            </a>
+   <a href="https://www.facebook.com/abdulwahabsiniya.lawal" class="icon">
+     <i class="fab fa-facebook-f"></i>
+                            </a>
+  </div>
+  <!-- Quote aapp header-->
+<div class="app">
+  <header>Random Quote Generator <br>-Made with ❤️ by Abdulwahab</header>
+  <!-- quote to be display-->
+  <section class="quotes">
+<i class="fas fa-quote-left"></i>
+    <div class="quote-text" id="QuoteText"></div>
+<i class="fas fa-quote-right"></i>
+  </section>
+  
+   <p class="QuoteWR" id="author"></p>
+  <!-- quote buttons controls-->
+  <section class="controls">
+    <button type="button" class="new-quote button" onclick="GenerateQuote()">Generate a new quote</button>
+    <a class="twitter button" id="tweet" target="_blank" rel="noreferrer">Tweet it</a>
+  </section>
+</div>
+</body>
+</html>
