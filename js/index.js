@@ -1,15 +1,34 @@
-const GenerateQuote = async () =>{
-         var url="https://type.fit/api/quotes";
+const quoteText = document.querySelector(".quote");
+const authorName = document.querySelector(".author  .name");
+const quoteBtn = document.querySelector("button");
+soundBtn = document.querySelector(".sound");
+copyBtn = document.querySelector(".copy");
+twitterBtn = document.querySelector(".twitter");
 
-         const response = await fetch(url);
-         const Quote_list = await response.json();
-         const randomIdx = Math.floor(Math.random()*Quote_list.length);
-         const quoteText=Quote_list[randomIdx].text;
-         const auth=Quote_list[randomIdx].author;
-         
-         if(!auth) author = "Anonymous";
-         document.getElementById("QuoteText").innerHTML=quoteText;
-         document.getElementById("author").innerHTML="~ "+auth;
-      }
-      GenerateQuote()
-    
+function randomQuote(){
+  quoteBtn.classList.add("loading");
+  quoteBtn.innerText = "Loading Quote...";
+  fetch("https://api.quotable.io/random").then(res=> res.json()).then(result => {
+    quoteText.innerText = result.content;
+    authorName.innerText = result.author;
+    quoteBtn.innerText = "New Quote";
+    quoteBtn.classList.remove("loading");
+  });
+}
+
+soundBtn.addEventListener("click",()=>{
+ let utterance = new SpeechSynthesisUtterance();
+  utterance.text = `${quoteText.innerText} by  ${authorName.innerText}`;
+  window.speechSynthesis.speak(utterance);
+});
+
+copyBtn.addEventListener("click",()=>{
+  navigator.clipboard.writeText(quoteText.innerText);
+});
+
+twitterBtn.addEventListener("click",()=>{
+  let tweetUrl = `https://twitter.com/intent/tweet?url=${quoteText.innerText}`;
+  window.open(tweetUrl, "_blank");
+});
+
+quoteBtn.addEventListener("click",randomQuote);
